@@ -183,3 +183,18 @@ if (S_ad / S_b > 4.5) {
         " при рівні значимості 0.05")
 }
 
+// не значимі коефіенти
+const cof2 = (Object.keys(T).filter(k => T[k] < 2.306));
+console.log(` не Значимі коефіціенти: ${cof2}`)
+
+// творіння формули з не значними коефіціентами
+const y_2 = n => sum(
+    cof2
+        .map(t => parseInt(t.slice(1)))
+        .map(i => B[`b${i}`] * (Tab.get_x_col(i)[n] | 1)))
+const y__2 = [y_2(1), y_2(2), y_2(3), y_2(4)]
+
+console.table([
+    ["y1^", "y2^", "y3^", "y4^"],
+    y__2
+])
