@@ -5,7 +5,7 @@ from sklearn import linear_model
 
 m = 3
 n = 15
-# варіант 18
+# варіант 318
 x1_min = -2
 x1_max = 3
 x2_min = -8
