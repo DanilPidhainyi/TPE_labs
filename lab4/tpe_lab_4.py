@@ -7,6 +7,7 @@ from scipy.stats import f, t
 x_min = [-20, 25, 10]
 x_max = [15, 45, 20]
 
+
 def aver(var_list, num=0):
     if num == 0:  # боротьба з пайтоном
         num = len(list(var_list))
@@ -18,7 +19,6 @@ def round2(num):
 
 
 def make_experiment(m=3):
- 
     def dispersion(y_list, avg_y_list):
         def el(i):
             return round2(aver(list(map(lambda item: (item - avg_y_list[i]) ** 2, y_list[i]))))
@@ -66,8 +66,7 @@ def make_experiment(m=3):
                 print('Виключити з рівняння коефіцієнт b' + str(i))
         print("\n<---------------Кінцеве рівняння--------------->")
         print(str_y.format(*map(round2, bList)))
-        
-        
+
     def fisher_criterion(d):
         print("\n<---------------Критерій Фішера--------------->")
         f4 = N - d
@@ -212,4 +211,9 @@ def make_experiment(m=3):
     cochrane_criterion(S_y)
     student_criterion(S_y, d)
     fisher_criterion(d)
+    return m - 2  # якщо m = 3, то записали рівняння регресії з ефектом взаємодії
+                  # лиш 1 раз, якщо 4 то 2 рази
 
+
+# зациклення
+print("Нараховано: {}".format(sum([make_experiment() for i in range(100)])))
