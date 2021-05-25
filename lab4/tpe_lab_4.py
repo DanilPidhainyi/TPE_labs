@@ -6,7 +6,7 @@ from scipy.stats import f, t
 # Варіант 318
 x_min = [-20, 25, 10]
 x_max = [15, 45, 20]
-
+counter = 0 // для додаткового завданя
 
 def aver(var_list, num=0):
     if num == 0:  # боротьба з пайтоном
@@ -19,6 +19,9 @@ def round2(num):
 
 
 def make_experiment(m=3):
+    
+    if m != 3:
+        counter += 1
 
     def dispersion(y_list, avg_y_list):
         def el(i):
@@ -214,5 +217,7 @@ def make_experiment(m=3):
     student_criterion(S_y, d)
     fisher_criterion(d)
 
+for і in range(100):
+    make_experiment()
 
-make_experiment()
+print(counter)
